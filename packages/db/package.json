@@ -2,6 +2,9 @@
   "name": "@repo/db",
   "version": "0.0.0",
   "main": "index.ts",
+  "scripts": {
+    "seed": "tsx src/seed/index.ts"
+  },
   "dependencies": {
     "dotenv": "^16.5.0",
     "drizzle-orm": "^0.41.0",
