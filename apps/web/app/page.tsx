@@ -141,7 +141,7 @@ export default function Home() {
               Book your dream vacation in just a few clicks with our instant
               reservation system, available 24/7. Secure your dates and
               accommodations quickly and easily, and start looking forward to
-              your family's luxury getaway.
+              your family&apos;s luxury getaway.
             </p>
           </div>
 
