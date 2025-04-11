@@ -1,8 +1,8 @@
 import { pgTable, serial, varchar, timestamp } from "drizzle-orm/pg-core";
-import { hotelsTable } from "./hotels";
+import { hotels } from "./hotels";
 import { relations } from "drizzle-orm";
 
-export const hotelProvidersTable = pgTable("hotel_providers", {
+export const hotel_providers = pgTable("hotel_providers", {
   id: serial("id").primaryKey(),
   name: varchar("name", { length: 255 }).notNull(),
   email: varchar("email", { length: 255 }).notNull().unique(),
@@ -13,8 +13,8 @@ export const hotelProvidersTable = pgTable("hotel_providers", {
 });
 
 export const hotelProvidersRelations = relations(
-  hotelProvidersTable,
+  hotel_providers,
   ({ many }) => ({
-    hotels: many(hotelsTable),
+    hotels: many(hotels),
   })
 );

@@ -5,22 +5,22 @@ import {
   timestamp,
   integer,
 } from "drizzle-orm/pg-core";
-import { hotelsTable } from "./hotels";
+import { hotels } from "./hotels";
 import { relations } from "drizzle-orm";
-import { hotelBookingsTable } from "./hotel_bookings";
+import { hotel_bookings } from "./hotel_bookings";
 
-export const ferriesTable = pgTable("ferries", {
+export const ferries = pgTable("ferries", {
   id: serial("id").primaryKey(),
   name: varchar("name", { length: 255 }).notNull(),
-  hotelId: integer("hotel_id").references(() => hotelsTable.id),
+  hotelId: integer("hotel_id").references(() => hotels.id),
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });
 
-export const ferriesRelations = relations(ferriesTable, ({ one, many }) => ({
-  hotel: one(hotelsTable, {
-    fields: [ferriesTable.hotelId],
-    references: [hotelsTable.id],
+export const ferriesRelations = relations(ferries, ({ one, many }) => ({
+  hotel: one(hotels, {
+    fields: [ferries.hotelId],
+    references: [hotels.id],
   }),
-  bookings: many(hotelBookingsTable),
+  bookings: many(hotel_bookings),
 }));

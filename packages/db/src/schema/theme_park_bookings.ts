@@ -6,7 +6,7 @@ import {
   pgEnum,
 } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
-import { hotelBookingsTable } from "./hotel_bookings";
+import { hotel_bookings } from "./hotel_bookings";
 
 export const tierEnum = pgEnum("tier", [
   "bronze",
@@ -19,7 +19,7 @@ export const themeParkBookingsTable = pgTable("theme_park_bookings", {
   id: serial("id").primaryKey(),
   tier: tierEnum("tier").notNull(),
   hotelBookingId: integer("hotel_booking_id").references(
-    () => hotelBookingsTable.id
+    () => hotel_bookings.id
   ),
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
@@ -28,9 +28,9 @@ export const themeParkBookingsTable = pgTable("theme_park_bookings", {
 export const themeParkBookingsRelations = relations(
   themeParkBookingsTable,
   ({ one }) => ({
-    hotelBooking: one(hotelBookingsTable, {
+    hotelBooking: one(hotel_bookings, {
       fields: [themeParkBookingsTable.hotelBookingId],
-      references: [hotelBookingsTable.id],
+      references: [hotel_bookings.id],
     }),
   })
 );
