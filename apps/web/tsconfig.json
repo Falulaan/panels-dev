@@ -9,10 +9,9 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
-    },
+  "@/*": ["./src/*"],
+  "@/components/ui/*": ["../../packages/ui/src/components/ui/*"],
+},
     "lib": [
       "dom",
       "dom.iterable",
